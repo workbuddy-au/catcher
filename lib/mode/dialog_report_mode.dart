@@ -31,11 +31,9 @@ class DialogReportMode extends ReportMode {
   }
 
   Widget _buildCupertinoDialog(Report report, BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async {
-        super.onActionRejected(report);
-        return true;
-      },
+    return PopScope(
+      canPop: true,
+      onPopInvoked: (_) => super.onActionRejected(report),
       child: CupertinoAlertDialog(
         title: Text(localizationOptions.dialogReportModeTitle),
         content: Text(localizationOptions.dialogReportModeDescription),
@@ -54,11 +52,9 @@ class DialogReportMode extends ReportMode {
   }
 
   Widget _buildMaterialDialog(Report report, BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async {
-        super.onActionRejected(report);
-        return true;
-      },
+    return PopScope(
+      canPop: true,
+      onPopInvoked: (_) => super.onActionRejected(report),
       child: AlertDialog(
         title: Text(localizationOptions.dialogReportModeTitle),
         content: Text(localizationOptions.dialogReportModeDescription),
